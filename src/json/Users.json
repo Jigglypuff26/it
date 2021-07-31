@@ -1,0 +1,11 @@
+{
+    "users": [
+        { "id": 1, "createDate": 1627755373255, "fio": "Денисов Назарий Михайлович", "birthday": "1996-07-15", "email": "test1@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "5", "donations": "9750" },
+        { "id": 2, "createDate": 1614795704, "fio": "Ефремов Роман Алексеевич", "birthday": "1993-12-1", "email": "test2@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "3", "donations": "9950" },
+        { "id": 3, "createDate": 1617214904, "fio": "Сергеев Роман Григорьевич", "birthday": "1998-07-1", "email": "test3@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "10", "donations": "850" },
+        { "id": 4, "createDate": 1614709304, "fio": "Сафонов Марк Наумович", "birthday": "1970-2-8", "email": "test4@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "5", "donations": "750" },
+        { "id": 5, "createDate": 1617301304, "fio": "Хохлов Климент Викторович", "birthday": "1995-6-8", "email": "test5@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "3", "donations": "7750" },
+        { "id": 6, "createDate": 1617301304, "fio": "Гаврилов Вальтер Григорьевич", "birthday": "1986-8-10", "email": "test6@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "10", "donations": "750" },
+        { "id": 7, "createDate": 1617214904, "fio": "Игнатьев Панкратий Эдуардович", "birthday": "1979-10-11", "email": "test7@mail.ru", "password": "12345678", "phone": "+7 222 222 22 22", "distance": "5", "donations": "450" }
+    ]
+}
