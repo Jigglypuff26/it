@@ -2,57 +2,64 @@ import React, { useEffect, useRef, useState } from 'react'
 import Inputmask from "inputmask"
 import validator from 'validator';
 import { UserProfile } from '../models/UserProfile'
-import { useDispatch, useSelector } from 'react-redux';
-import { updateUsersData } from '../redux/actions/usersDataActions';
 
 function StartPage() {
-  const dispatch = useDispatch()
-  const usersList = useSelector(state => state.usersDataReduser.users)
+  const data = JSON.parse(localStorage.getItem('users'))
   const form = useRef({ ...UserProfile })
   const [activBtn, setActivBtn] = useState(false) 
    
   // очищает форму при использовании
   const changeHandler = event => {
-    form.current = {...form.current, [event.target.name]: event.target.value}    
+    form.current = {...form.current, [event.target.name]: event.target.value}
     if(form.current.fio && form.current.birthday && form.current.email 
         && form.current.password && form.current.phone 
         && form.current.distance && form.current.donations
         && form.current.confirmation ) {
           setActivBtn(true)
-          // получаем год с дыты из формы
-          // console.log(new Date(form.current.birthday).getFullYear())
         }
   }
 
   const logHandler = () => {
+    const userYaer = new Date(form.current.birthday.split("-")).getFullYear() 
+    const currentYear = new Date().getFullYear()
     // проверка на валидацию
-    if(validator.isEmail(form.current.email) && form.current.donations >= 200 && form.current.donations <= 10000) {
-      form.current.id = usersList[usersList.length - 1].id + 1
-      form.current.createDate = Date.now()
-      console.log(form.current)
-      dispatch(updateUsersData(form.current))
-      // отчистка формы и состояния формы
-      const valueInput = document.querySelectorAll('input')
-      valueInput.forEach(element => {element.value = ""})
-      form.current = {...UserProfile}
-      setActivBtn(false)
+    if(!validator.isEmail(form.current.email)) {
+      alert('Введите корректный email')
+    }
+    if(!validator.isLength(form.current.password , {min:3, max: 10})) {
+      alert('Длинна пароля должна быть от 3 до 10 символов')
+    }
+    if(!(currentYear - userYaer >= 14)) {
+      alert('В марафоне могут участвовать участники 14 лет и старше')
+    }
+    if(!(form.current.donations >= 200) && !(form.current.donations <= 10000)) {
+      alert('Сумма взноса должна быть от 200 до 10000')
+    }
+    if(validator.isEmail(form.current.email) && form.current.donations >= 200 
+      && form.current.donations <= 10000 && currentYear - userYaer >= 14 ) {
+        form.current.id = data.usersList[data.usersList.length - 1].id + 1
+        form.current.createDate = Date.now()
+        localStorage.setItem('users', JSON.stringify({
+          usersList: [...data.usersList, form.current]
+        }))
+        // отчистка формы и состояния формы
+        const valueInput = document.querySelectorAll('input')
+        valueInput.forEach(element => {element.value = ""})
+        form.current = {...UserProfile}
+        setActivBtn(false)
     }
   }
 
   // скрипты при создании компонента
   useEffect(() => {
-    // console.log(new Date());
+    // получение списка пользователей
     const dateInput = document.getElementById('birthday')
     dateInput.valueAsDate = new Date()
-    // маси для импутов
+    // маска для импутов
     const selector = document.getElementById("phone")
     const im = new Inputmask("+7 999 999 99 99")
     im.mask(selector)
-    // Записываем в storege здесь, т.к. нет сервера для сохранения данных
-    localStorage.setItem('users', JSON.stringify({
-      usersList
-    }))
-  }, [usersList])
+  }, [])
 
     
   return (

@@ -1,6 +1,9 @@
 import React, { useRef, useState } from 'react'
+import validator from 'validator'
+import { useLogin } from '../hooks/useLogin'
 
 function LoginPage() {
+  const {loginUser} = useLogin()
     const form = useRef({
         email: null,
         password: null
@@ -11,16 +14,26 @@ function LoginPage() {
     const changeHandler = event => {
       form.current = {...form.current, [event.target.name]: event.target.value}
       if(form.current.email && form.current.password) {
-        setActivBtn(!activBtn)
+        setActivBtn(true)
       }
     }
 
     const logHandler = () => {
-        console.log(form.current)
+      if(!validator.isEmail(form.current.email)) {
+        alert('Введите корректный email')
+      }
+      if(!validator.isLength(form.current.password , {min:3, max: 10})) {
+        alert('Длинна пароля должна быть от 3 до 10 символов')
+      }
+      if(validator.isEmail(form.current.email) && validator.isLength(form.current.password , {min:3, max: 10})) {
+        console.log('Логин');
+        loginUser(form.current.email, form.current.password)
+        // отчистка форма и состояния формы
         const valueInput = document.querySelectorAll('input')
         valueInput.forEach(element => {element.value = ""})
         form.current = { email: null, password: null }
-        setActivBtn(!activBtn)
+        setActivBtn(false)
+      }
     }
 
   return (

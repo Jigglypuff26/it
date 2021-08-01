@@ -1,7 +1,16 @@
 import { ADD_PROFILE, REMOVE_PROFILE } from "./typs"
 
+const user = () => {
+    const data = JSON.parse(localStorage.getItem('userProfile'))
+    if(data) {
+        return data
+    } else {
+        return null
+    }
+}
+
 const initialState = {
-    profile : null,
+    profile : user(),
 }
 
 export const profileReduser = (state = initialState, action) => {
