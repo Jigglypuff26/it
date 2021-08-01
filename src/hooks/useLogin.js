@@ -15,7 +15,7 @@ export const useLogin = () => {
                 localStorage.setItem('userProfile', JSON.stringify({data}))
                 dispatch(addProfile(data))
             } else {
-                alert('Неверный логин или пароль')
+                alert('Неверный логин или пароль1')
             }
         } else {
             alert('Неверный логин или пароль')

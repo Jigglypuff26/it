@@ -9,6 +9,7 @@ function ProfilePage() {
     <div className="container">
       <h1>ProfilePage</h1>
       <button className="btn" id="btn" onClick={logOut}>Выйти</button>
+      <a href='/participants'>Список участников</a><br/>
     </div>
   );
 }
