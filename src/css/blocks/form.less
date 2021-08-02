@@ -1,0 +1,40 @@
+// main: ../index.less
+
+.form {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    @media @size_576px {
+        height: auto;
+    }
+}
+
+.form_a {
+    margin-top: 2rem;
+    a {
+        margin: 0 1rem;
+        text-decoration: none;
+        color: white;
+        padding: 1rem 0.5rem;
+        background-color: slateblue;
+        border-radius: 10px;
+    }
+
+    @media @size_576px {
+        display: flex;
+        flex-direction: column;
+        a {
+            margin: 0.5rem 0;
+        }
+    }
+}

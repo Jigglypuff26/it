@@ -64,8 +64,9 @@ function StartPage() {
     
   return (
     <div className="container">
-      <h2>Регистрация на марафон</h2>
-        <div className="AuthForm">
+      <div className="form">
+        <h2>Регистрация на марафон</h2>
+          <div className="AuthForm">
           <div className="AuthForm__value">
             <label className="AuthForm__label" htmlFor="email">Введите ваше Ф.И.О.</label>
             <input
@@ -139,7 +140,7 @@ function StartPage() {
                   onChange={changeHandler}/>
           </div>          
           <div className="AuthForm__value">
-              <label className="AuthForm__label" htmlFor="email">Согласие на создание профиля </label>
+              <label className="AuthForm__label" htmlFor="email">Согласие на создание профиля</label>
               <input
                   className="AuthForm__input"
                   placeholder="от 100 до 10 000"
@@ -148,10 +149,13 @@ function StartPage() {
                   type="checkbox"
                   onChange={changeHandler}/>
           </div>          
-          <button className={`${activBtn ? '' : 'no-click'}`} id="btn" onClick={logHandler}>войти</button><br/>
+          <button className={`${activBtn ? '' : 'no-click'}`} id="btn" onClick={logHandler}>Зарегистрироватся</button><br/>
       </div>
-      <a href='/participants'>Список участников</a><br/>
-      <a href='/login'>Воити в профиль</a>
+          <div className="form_a">
+            <a href='/participants'>Список участников</a>
+            <a href='/login'>Воити в профиль</a>
+          </div>      
+      </div>
     </div>
   );
 }

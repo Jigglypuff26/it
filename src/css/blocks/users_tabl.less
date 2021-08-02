@@ -1,0 +1,68 @@
+// main: ../index.less
+
+.users_tabl {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    table{
+        width: 100%;
+        @media @size_576px {
+            font-size: 10px;
+        }
+    }
+
+    h2 {
+        font-size: 2rem;
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    th {
+        border: 2px solid black;
+        vertical-align: middle;
+    }
+
+    td {
+        border: 1px solid grey;
+        vertical-align: middle;
+    }
+}
+
+.users_tabl_head {
+    text-align: center;
+    height: 32px;
+    cursor: pointer;
+}
+
+.users_tabl_body {
+    text-align: center;
+    height: 23px;
+}
+
+.paginator {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1.5rem;
+}
+
+.paginator_item {
+        margin: 0 1rem;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 3rem;
+        height: 3rem;
+        border: 2px solid grey;
+        border-radius: 50%;
+
+    &--activ {
+        background-color: brown;
+        color: white;
+    }
+
+
+    }

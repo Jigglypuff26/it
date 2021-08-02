@@ -6,7 +6,7 @@ function UserItem({user}) {
   const dateReg = `${new Date(user.createDate).getDay()}.${monthNames[new Date(user.createDate).getMonth()]}.${new Date(user.createDate).getFullYear()}`
 
     return (
-      <tr id={user.id} >
+      <tr className="users_tabl_body" id={user.id} >
         <td>{user.fio}</td>
         <td>{dateReg}</td>
         <td>{user.email}</td>

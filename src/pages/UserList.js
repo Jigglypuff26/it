@@ -28,31 +28,35 @@ function UserList() {
 
     return (
       <div className="container">
-        <a href='/'>на главную</a> 
-        <table border="1" width="100%">
-          <tbody>
-            <tr>
-              <th onClick={() => {sortList(usersList,'fio')}}>ФИО</th>
-              <th onClick={() => {sortList(usersList,'createDate')}}>Дата создания заявки</th>
-              <th onClick={() => {sortList(usersList,'email')}}>Email</th>
-              <th onClick={() => {sortList(usersList,'distance')}}>Дистанция</th>
-              <th onClick={() => {sortList(usersList,'donations')}}>Сумма взноса</th>
-            </tr>
-            {list.map((user, index) => {
-              return <UserItem user={user} key={index}/>
-            })}
-          </tbody>
-        </table>
-        <div className="paginator">
-          {numiration.map((num, index) => { 
-            return <h3 className={`paginator_num_page`}
-                    style={ curentPage === num? {color: "red"} : {}}
-                    onClick={() => {
-                      setCurentPage(num)
-                    }} 
-                    id={index} 
-                    key={index} >{num}</h3>})
-          }
+        <div className="users_tabl">
+          <h3>Список участников</h3>
+          <table>
+            <tbody>
+              <tr className="users_tabl_head">
+                <th onClick={() => {sortList(usersList,'fio')}}>ФИО</th>
+                <th onClick={() => {sortList(usersList,'createDate')}}>Дата создания заявки</th>
+                <th onClick={() => {sortList(usersList,'email')}}>Email</th>
+                <th onClick={() => {sortList(usersList,'distance')}}>Дистанция</th>
+                <th onClick={() => {sortList(usersList,'donations')}}>Сумма взноса</th>
+              </tr>
+              {list.map((user, index) => {
+                return <UserItem user={user} key={index}/>
+              })}
+            </tbody>
+          </table>
+          <div className="paginator">
+            {numiration.map((num, index) => { 
+              return <h3 className={`paginator_item ${curentPage === num? 'paginator_item--activ' : ''}`}
+                      onClick={() => {
+                        setCurentPage(num)
+                      }} 
+                      id={index} 
+                      key={index} >{num}</h3>})
+            }
+          </div>
+          <div className="form_a">
+            <a href='/'>на главную</a> 
+          </div>
         </div>
       </div>
     )

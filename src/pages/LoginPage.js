@@ -38,6 +38,7 @@ function LoginPage() {
 
   return (
       <div className="container">
+      <div className="form">
         <h1>Вход в учентую запись пользователя</h1>
         <div className="AuthForm">
             <div className="AuthForm__value">
@@ -62,8 +63,11 @@ function LoginPage() {
             </div>
             <button className={`${activBtn ? '' : 'no-click'}`} id="btn" onClick={logHandler}>войти</button><br/>
         </div>
-        <a href='/participants'>Список участников</a><br/>
-        <a href='/'>Зарегестрироваться</a>
+        <div className="form_a">
+          <a href='/participants'>Список участников</a>
+          <a href='/'>Зарегестрироваться</a>
+        </div>
+        </div>
       </div>      
     )
 }
